@@ -1,0 +1,24 @@
+<!--
+  @description       : 
+  @author            : ChangeMeIn@UserSettingsUnder.SFDoc
+  @group             : 
+  @last modified on  : 05-26-2021
+  @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+  Modifications Log 
+  Ver   Date         Author                               Modification
+  1.0   05-17-2021   ChangeMeIn@UserSettingsUnder.SFDoc   Initial Version
+-->
+<template>
+    <lightning-card title="Demo of test push test from feature branch to master branch"> 
+   This is template 1        
+   <br/> <br/>        
+   <lightning-button  label="Go to the  template 2"  onclick={onchange1}> 
+          </lightning-button>
+   </lightning-card>
+   <template if:true={showChildCmp}>
+    <div class="slds-m-vertical_medium">
+        These are the details!
+    </div>
+   <c-secondchild-comp></c-secondchild-comp>
+   </template>
+   </template>
