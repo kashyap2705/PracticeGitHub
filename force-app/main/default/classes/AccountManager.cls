@@ -2,7 +2,7 @@
  * @description       : 
  * @author            : ChangeMeIn@UserSettingsUnder.SFDoc
  * @group             : 
- * @last modified on  : 08-17-2021
+ * @last modified on  : 08-21-2021
  * @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
 **/
 public with sharing class AccountManager {
@@ -17,7 +17,7 @@ public with sharing class AccountManager {
       } catch (Exception e) {
           throw new AuraHandledException(e.getMessage());
       }
-      system.debug('Hii Anil*****'+ acclist);
+      system.debug('Hii Anil Kasyap Tutorial*****'+ acclist);
       return acclist;
   }
 }
