@@ -17,7 +17,7 @@ public with sharing class AccountManager {
       } catch (Exception e) {
           throw new AuraHandledException(e.getMessage());
       }
-      system.debug('Hii Anil**'+ acclist);
+      system.debug('Hii Anil*****'+ acclist);
       return acclist;
   }
 }
