@@ -1,0 +1,27 @@
+<!--
+  @description       : 
+  @author            : ChangeMeIn@UserSettingsUnder.SFDoc
+  @group             : 
+  @last modified on  : 08-17-2021
+  @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+-->
+<template>
+    
+
+  <template if:true={showMsg}>
+      <h1> HIi Anil </h1>
+      <p> welcome to demo class </p>
+
+      Anil {Greeting} !!!
+    </template>
+
+    <lightning-input value="" label="First Name" name="drugApiName"  onchange={onValueChange}></lightning-input>
+    <lightning-input value="" label="Second Name" name="drugApiName1"  onchange={onValueChange}></lightning-input>
+
+    Result Finally is {result}
+
+    <c-demo2 demo2greeting={Greeting}> </c-demo2>
+
+
+
+</template>

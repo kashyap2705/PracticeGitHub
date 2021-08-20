@@ -1,0 +1,25 @@
+<!--
+  @description       : 
+  @author            : ChangeMeIn@UserSettingsUnder.SFDoc
+  @group             : 
+  @last modified on  : 08-19-2021
+  @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+-->
+<template>
+	<lightning-card title="Search Account Wired Function" iconname="custom:custom57">
+
+		<div class="slds-m-around_medium">
+			<lightning-input type="search" onchange={handleKeyChange} class="slds-m-bottom_small" label="Search"></lightning-input>
+			<template if:true={accounts}>
+				<template for:each={accounts.data} for:item="acc">
+					<lightning-layout vertical-align="center" key={acc.id}>
+						<li>
+							{acc.Name}
+							{acc.AccountNumber}
+						</li>
+					</lightning-layout>
+				</template>
+			</template>
+		</div>
+	</lightning-card>
+</template>

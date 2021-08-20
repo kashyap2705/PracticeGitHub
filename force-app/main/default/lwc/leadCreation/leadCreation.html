@@ -1,0 +1,18 @@
+<!--
+  @description       : 
+  @author            : ChangeMeIn@UserSettingsUnder.SFDoc
+  @group             : 
+  @last modified on  : 08-16-2021
+  @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+  Modifications Log 
+  Ver   Date         Author                               Modification
+  1.0   06-17-2021   ChangeMeIn@UserSettingsUnder.SFDoc   Initial Version
+-->
+<template>
+    <lightning-input type="checkbox" onchange={onValueChange} label="New Lead" name="newLead"></lightning-input>
+    <lightning-input type="text" onchange={onValueChange} name="fname" label={labels.firstName}  data-field-name={apiNames.firstName}></lightning-input>
+    <lightning-input type="text" onchange={onValueChange} name="lname" label={labels.lastName} required data-field-name={apiNames.lastName}></lightning-input>
+    <lightning-input type="text" onchange={onValueChange} label="Test"  data-field-name="Test"></lightning-input>
+
+    Lead creating greeting {leadGreeting}
+</template>

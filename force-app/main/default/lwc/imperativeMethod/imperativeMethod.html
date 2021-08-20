@@ -1,0 +1,37 @@
+<!--
+  @description       : 
+  @author            : ChangeMeIn@UserSettingsUnder.SFDoc
+  @group             : 
+  @last modified on  : 08-17-2021
+  @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+-->
+<template>
+    <lightning-card icon-name="standard:person_account" title="Imperative Apex Call">
+        
+        <lightning-layout horizontal-align="spread">
+            <lightning-layout-item padding="around-medium">
+                <lightning-button label="Show Accounts" onclick={onShowClick}></lightning-button>
+            </lightning-layout-item>
+            <lightning-layout-item padding="around-medium">
+                <lightning-button label="Hide Accounts" onclick={onHideClick}></lightning-button>
+            </lightning-layout-item>
+        </lightning-layout>
+
+
+        <lightning-layout multiple-rows="true">
+            <template if:true={showAccounts}>
+                <template for:each={accountsList} for:item="account">
+                    <lightning-layout-item size="12" key={account.Id}>
+                        <div class="slds-text-align_center">
+                            {account.Name}
+                        </div>
+                    </lightning-layout-item>
+                </template>
+            </template>
+        </lightning-layout>
+
+
+    </lightning-card>
+
+    User Id:- {loggedInUserId}
+</template>
