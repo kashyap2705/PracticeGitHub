@@ -17,7 +17,7 @@ public with sharing class AccountManager {
       } catch (Exception e) {
           throw new AuraHandledException(e.getMessage());
       }
-      system.debug('Hii Anil Kasyap Tutorial Test Now Night *****'+ acclist);
+      system.debug('Hii Anil Kasyap Tutorial Test Now Night showing Feature Test Night 11 *****'+ acclist);
       return acclist;
   }
 }
