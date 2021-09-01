@@ -1,13 +1,15 @@
 # This is a basic workflow to help you get started with Actions
 
-name: Deploy Merged Pull Request
+name: Validate Pull Request
 
-# Controls when the action will run
+# Controls when the action will run. 
 on:
   # Triggers the workflow on pull request events but only for the master branch
 
-    push:
-      branches: [ STAGE-SIT ]
+    pull_request:
+      types: [ opened, synchronize ]
+      branches:
+        - SaturdayTest
 
     # Allows you to run this workflow manually from the Actions tab
     workflow_dispatch:
@@ -18,7 +20,7 @@ jobs:
   build:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
-    name: Checkout Code and Run SFDX Script For Deployment
+    name: Checkout Code and Run SFDX Script for Validation
     container: salesforce/salesforcedx
 
     # Steps represent a sequence of tasks that will be executed as part of the job
@@ -34,19 +36,19 @@ jobs:
       shell: bash
       run: 'echo hello > ./deploy_result.json'
     # Auth
-    - name: 'Populate auth file with SFDX_URL secret'
+    - name: 'Populate Auth File'
       shell: bash
-      run: 'echo ${{ secrets.EPAMDEV1_SFDXURL}} > ./SFDX_URL_STORE.txt'
-    - name: Authentificate to Environment
+      run: 'echo ${{ secrets.INTTESTING_SFDXURL}} > ./SFDX_URL_STORE.txt'
+    - name: Authentificate
       uses: forcedotcom/salesforcedx-actions@master
       with:
-        args: 'force:auth:sfdxurl:store --sfdxurlfile=./SFDX_URL_STORE.txt --setalias=epamdev1'
-    - name: Deploy Source
-      run: sfdx force:source:deploy -u epamdev1 -x manifest/package.xml -l RunLocalTests
-    - name: Deployment Log
+        args: 'force:auth:sfdxurl:store --sfdxurlfile=./SFDX_URL_STORE.txt --setalias=dtcdev'
+    - name: Validate Source
+      run: sfdx force:source:deploy -c -u dtcdev -x manifest/package.xml -l RunLocalTests
+    - name: Validation Log
       uses: forcedotcom/salesforcedx-actions@master
       with:
-        args: force:source:deploy:report --json > deploy_result.json --loglevel debug -u epamdev1
+        args: force:source:deploy:report --json > deploy_result.json --loglevel debug
     - name: 'Upload Artifact'
       uses: actions/upload-artifact@v2
       with:
