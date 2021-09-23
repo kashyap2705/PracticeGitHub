@@ -1,0 +1,22 @@
+<template>
+  <lightning-card title={title} icon-name="custom:custom54">
+      <div class="slds-text-body_regular">Please select/de-select the checkbox to add/remove the mapping fields</div>
+      <div class="slds-box">
+          <template if:true={objectInfo.data}>
+              <lightning-input name="enter-search" placeholder="Search by Label, API Name Or Data Type" type="search" value={searchText} onchange={performSearch}>
+              </lightning-input>
+              <div class="demo-only demo-only--sizing slds-grid slds-wrap">
+                  <template for:each={searchResults} for:item="mapKey">
+                      <div key={mapKey.apiName} class={styleClass}>
+                          <div class="slds-box slds-box_x-small slds-text-align_center slds-m-around_x-small">
+                              <c-field-template key={mapKey.apiName} record-id={recordId} field-defination={mapKey}
+                                  onselection={handleSelection} field-defs={objectFields} mappings={mapElements}>
+                              </c-field-template>
+                          </div>
+                      </div>
+                  </template>
+              </div>
+          </template>
+      </div>
+  </lightning-card>
+</template>

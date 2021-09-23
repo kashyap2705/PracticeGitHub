@@ -1,0 +1,15 @@
+<template>
+  <div class="slds-grid slds-gutters">
+    <div class="slds-box slds-size_1-of-1">
+      <span>
+        <c-template-builder record-id={recordId} mappings={elementsData} onitemchange={handleNewItem}>
+        </c-template-builder>
+    </span>
+    </div>
+    <div class="slds-box slds-size_1-of-1">
+      <template if:true={error}>
+        <c-error-panel errors={error}></c-error-panel>
+      </template>
+    </div>
+  </div>
+</template>

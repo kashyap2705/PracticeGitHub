@@ -1,0 +1,25 @@
+<apex:page showHeader="false" sidebar="false" controller="EnhancedAuditTrackingCont">
+    <apex:includeLightning />    
+    <div id="LightningComponentid" />    
+    <script type="text/javascript">
+    var recordId = "{!$CurrentPage.parameters.id}";
+    var objectApiName = "{!objName}";
+    var viewAllClassic = "{!viewAllClassic}";
+    var rowOffSet = "{!rowOffSet}";
+    var rowLimit = "{!rowLimit}";
+    $Lightning.use("c:EnhancedAuditTracking", function() {
+        $Lightning.createComponent("c:eat_HistoryComponent",
+          { 
+              "recordId" : recordId,
+              "objectApiName" : objectApiName,
+              "viewAllClassic" : viewAllClassic,
+              "rowOffSet" : rowOffSet,
+              "rowLimit" : rowLimit
+          },
+          "LightningComponentid",
+          function(cmp) {
+             console.log('LWC Component added in VF page');
+          });
+    });
+    </script>
+</apex:page>

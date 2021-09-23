@@ -1,0 +1,39 @@
+<template>
+    <lightning-card title="Preview Template" icon-name="custom:custom53">
+        <template if:true={objectName}>
+            <template if:false={draggable}>
+                <lightning-input type='Checkbox' value={draggable} label='Sort Mode' onchange={changeSortMode}>
+                </lightning-input>
+            </template>
+            <template if:true={draggable}>
+                <div class="slds-form slds-form_stacked slds-border">
+                    <div class="slds-p-top_x-small slds-p-bottom_x-small">
+                        <ul class="slds-button-group-row slds-align_absolute-center">
+                            <li class="slds-button-group-item">
+                                <button class="slds-button slds-button_brand" onclick={handleSave}>Save</button>
+                            </li>
+                            <li class="slds-button-group-item">
+                                <button class="slds-button slds-button_brand" onclick={handleCancel}>Cancel</button>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </template>
+            <template if:false={draggable}>
+                <lightning-record-edit-form record-id="" object-api-name={objectName}>
+                    <lightning-messages>
+                    </lightning-messages>
+                    <template for:each={elements} for:item="element">
+                        <lightning-input-field key={element.e_eat__Field_API_Name__c}
+                            field-name={element.e_eat__Field_API_Name__c}
+                            id={element.Id} onchange={handleChange}>
+                        </lightning-input-field>
+                    </template>
+                </lightning-record-edit-form>
+            </template>
+        </template>
+        <template if:false={objectName}>
+            Object Not Defined.
+        </template>
+    </lightning-card>
+</template>

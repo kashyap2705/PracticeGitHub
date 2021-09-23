@@ -1,0 +1,12 @@
+.contentClass {
+  color: black !important;
+}
+.displayNote {
+  font-size: 13px;
+}
+.displayViewNote {
+  font-size: 15px;
+}
+.displayContent {
+  height: 550px;
+}

@@ -1,0 +1,14 @@
+<template>
+    <div>
+        <template if:true={ranger} >
+            <lightning-record-view-form
+                    record-id={ranger}
+                    object-api-name="e_eat__Audit_Tracking_History__c">
+                <div class="slds-popover slds-nubbin_bottom potato slds-box">
+                    <lightning-output-field field-name="e_eat__Original_Value__c">
+                    </lightning-output-field>
+                </div>
+            </lightning-record-view-form>
+        </template>
+    </div>
+</template>

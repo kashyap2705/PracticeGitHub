@@ -1,0 +1,29 @@
+<template>
+    <template if:true={fieldDefination}>
+        <div class="slds-media__body">
+            <div class="slds-tile__detail">
+                <div class="slds-list_horizontal slds-wrap">
+                      
+                    <div class="slds-size_1-of-2  slds-truncate slds-text-align--left">
+                        <lightning-input type="checkbox" checked={activeMapping} name="input1" onchange={handleChange}>
+                        </lightning-input>
+                    </div>
+                  
+                    <div class="slds-size_1-of-2">
+                    </div>
+                    <div class="slds-size_1-of-2 slds-truncate slds-text-align--left" title="Label">Label:</div>
+                    <div class="slds-size_1-of-2 slds-truncate slds-text-align--left" title={fieldDefination.label}>
+                        {fieldDefination.label}</div>
+                    <div class="slds-size_1-of-2 slds-truncate slds-text-align--left" title="API Name">API Name:</div>
+                    <div class="slds-size_1-of-2 slds-truncate slds-text-align--left" title={fieldDefination.apiName}>
+                        {fieldDefination.apiName}</div>
+                    <div class="slds-size_1-of-2 slds-truncate slds-text-align--left" title="Data Type:">Data Type:
+                    </div>
+                    <div class="slds-size_1-of-2 slds-truncate slds-text-align--left" title={fieldDefination.dataType}>
+                        {fieldDefination.dataType}</div>
+                </div> 
+            
+            </div>
+        </div>
+    </template>  
+</template>

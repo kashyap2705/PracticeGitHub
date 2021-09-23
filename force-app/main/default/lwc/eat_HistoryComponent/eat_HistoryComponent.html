@@ -1,0 +1,122 @@
+<template>
+  <lightning-card>
+    <div slot="title" class="displayNote">
+      <lightning-record-edit-form record-id={recordId} object-api-name="Account" onsubmit={handleSubmit}>
+      </lightning-record-edit-form>
+      <template if:false={viewAllLink}>
+        <template if:true={trackingDataSize}>
+          <template if:true={trackingData}>
+            <lightning-icon icon-name={iconName} size="small" title={relatedObjectLabel}></lightning-icon>
+            &nbsp;
+            <template if:true={viewAll}>
+              <a onclick={handleClick} class="slds-card__header-link slds-truncate" title={relatedObjectLabel}>
+                <span class="displayViewNote">{relatedObjectLabel} History ({trackingDataSize}
+                  <template if:true={showPlus}>
+                    <span>+</span>
+                  </template>
+                  <span>)</span>
+                </span>
+              </a>
+            </template>
+            <template if:false={viewAll}>
+              <b><span title={relatedObjectLabel} class="displayViewNote">{relatedObjectLabel} History
+                  ({trackingDataSize})</span></b> </template><br /><br />
+            <lightning-datatable data={trackingData} columns={columns} key-field="id" sorted-by={sortBy}
+              sorted-direction={sortDirection} onsort={handleSortdata} hide-checkbox-column="true"
+              show-row-number-column="true">
+            </lightning-datatable>
+            <br />
+            <template if:true={viewAll}>
+              <div slot="footer" class="slds-text-align_center">
+                <a class="slds-card__footer-action" onclick={handleClick}>View All
+                  <span class="slds-assistive-text">{relatedObjectLabel}</span>
+                </a>
+              </div>
+            </template>
+          </template>
+        </template>
+        <template if:false={trackingDataSize}>
+          <lightning-icon icon-name={iconName} size="small" title={relatedObjectLabel}></lightning-icon>
+          &nbsp;&nbsp;
+          <b><span title={relatedObjectLabel} class="displayViewNote">{relatedObjectLabel} History
+              ({trackingDataSize})</span></b>
+        </template>
+      </template>
+      <template if:true={viewAllLink}>
+        <template if:true={trackingDataSize}>
+          <template if:true={trackingData}>
+            <template if:true={viewLimited}>
+              <div class="slds-col slds-has-flexi-truncate firstHeaderRow">
+                <a title={relatedObjectpluralLabel}>
+                  <span class="displayNote" onclick={navigateToRecentListView}>{relatedObjectpluralLabel}</span>
+                </a>
+                &nbsp;>&nbsp;
+                <a title={sObjectRecordName}>
+                  <span onclick={navigateToDetailPage} class="displayNote">{sObjectRecordName}</span> </a><br />
+                <b><span title={relatedObjectLabel} class="displayViewNote">{relatedObjectLabel} History
+                    ({trackingDataSize})</span></b>
+              </div>
+              <lightning-datatable data={trackingData} columns={columns} key-field="id" sorted-by={sortBy}
+                sorted-direction={sortDirection} onsort={handleSortdata} hide-checkbox-column="true"
+                show-row-number-column="true">
+              </lightning-datatable>
+            </template>
+            <template if:false={viewLimited}>
+              <div class="slds-col slds-has-flexi-truncate firstHeaderRow">
+                <a title={relatedObjectpluralLabel}>
+                  <span class="displayNote" onclick={navigateToRecentListView}>{relatedObjectpluralLabel}</span>
+                </a>
+                &nbsp;>>>&nbsp;
+                <a title={sObjectRecordName}>
+                  <span onclick={navigateToDetailPage} class="displayNote">{sObjectRecordName}</span> </a><br />
+                <b><span title={relatedObjectLabel} class="displayViewNote">{relatedObjectLabel} History
+                    ({trackingDataSize})</span></b>
+              </div>
+              <div class="slds-m-around_medium">
+                <lightning-input type="search" onchange={handleKeyChange} class="slds-m-bottom_small" label="Search"
+                value={searchKey}></lightning-input>
+              </div></br>
+              <div class="displayContent">
+                <lightning-datatable data={trackingData} columns={columns} key-field="id" sorted-by={sortBy}
+                  sorted-direction={sortDirection} onsort={handleSortdata} hide-checkbox-column="true"
+                  show-row-number-column="true" enable-infinite-loading onloadmore={loadMoreData}>
+                </lightning-datatable>
+              </div>
+            </template>
+          </template>
+        </template>
+        <template if:false={trackingDataSize}>
+          <lightning-icon icon-name={iconName} size="small" title={relatedObjectLabel}></lightning-icon>
+          &nbsp;&nbsp;
+          <b><span title={relatedObjectLabel} class="displayViewNote">{relatedObjectLabel} History
+              ({trackingDataSize})</span></b>
+        </template>
+      </template>
+      <template if:false={trackingData}>
+        <lightning-icon icon-name={iconName} size="small" title={relatedObjectLabel}></lightning-icon>
+        &nbsp;
+        <b><span title={relatedObjectLabel} class="displayViewNote">{relatedObjectLabel} History
+            ({trackingDataSize})</span></b>
+      </template><br /><br /><br /><br />
+
+      <template if:true={securityError}>
+        <div class="slds-clearfix">
+          <div class="slds-align_absolute-center">
+            <lightning-card title={label.SecurityErrorMessage} icon-name="utility:error" class="slds-var-m-left_x-small">
+              &nbsp;&nbsp;&nbsp;&nbsp;
+            </lightning-card>
+          </div>
+        </div>
+      </template>
+      <template if:true={zeroRecErrorMsg}>
+        <div class="slds-clearfix">
+          <div class="slds-align_absolute-center">
+            <lightning-card title={label.zeroRecError} icon-name="action:info" class="slds-var-m-left_x-small">
+              &nbsp;&nbsp;&nbsp;&nbsp;
+            </lightning-card>
+          </div>
+        </div>
+      </template>
+    </div>
+  </lightning-card>
+</template>
