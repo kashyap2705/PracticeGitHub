@@ -1,0 +1,103 @@
+.THIS .regular-font-light {
+	font-family: 'Myriad Pro Light';
+}
+
+.THIS .regular-font {
+	font-family: 'Myriad Pro';
+}
+
+.THIS .hidden {
+	pointer-events: none;
+}
+
+.THIS .greyOut {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	background: rgba(0, 0, 0, 0.1);
+}
+
+.THIS .feed-container {
+	position: relative;
+}
+
+.THIS .cuf-ftcFieldLabel {
+	font-size: var(--font-size-16);
+	color: var(--secondary-text-color);
+	font-family: 'Myriad Pro';
+	--lwc-colorTextWeak: var(--secondary-text-color);
+}
+
+.THIS .cuf-ftcFieldOldValue {
+	font-size: var(--font-size-24);
+	color: var(--secondary-text-color);
+	font-family: 'Myriad Pro';
+	--lwc-colorTextWeak: var(--secondary-text-color);
+}
+
+.THIS .cuf-ftcFieldNewValue {
+	font-size: var(--font-size-24);
+	color: var(--secondary-text-color);
+	font-family: 'Myriad Pro';
+	--lwc-colorTextWeak: var(--secondary-text-color);
+}
+
+.THIS .cuf-ftcDrillInItem {
+	font-size: var(--font-size-24);
+}
+
+.THIS .cuf-preamble {
+	font-size: var(--font-size-16);
+	color: var(--secondary-text-color);
+	font-family: 'Myriad Pro';
+	--lwc-colorTextWeak: var(--secondary-text-color);
+	--lwc-fontSizeMedium: var(--font-size-16) !important;
+}
+
+.THIS .uiOutputText {
+	font-size: var(--font-size-16);
+	font-family: 'Myriad Pro';
+}
+
+.THIS .cuf-timestamp {
+	font-family: 'Myriad Pro';
+	font-size: var(--font-size-14);
+	color: var(--secondary-text-color);
+}
+
+.THIS .slds-post__footer-actions-list {
+	font-family: 'Myriad Pro';
+	font-size: var(--font-size-16);
+	color: var(--secondary-text-color);
+}
+
+.THIS .cuf-entityLink {
+	--lwc-brandTextLink: var(--primary-text-color);
+}
+
+.THIS .entityLinkHover {
+	pointer-events: none;
+	cursor: default;
+}
+
+.THIS .cuf-media-right {
+	display: none;
+}
+
+.THIS .forceChatterFeedAuxBodyRecordSummary--default .rsLink {
+	display: none;
+}
+
+.THIS .forceChatterFeedAuxBodyRecordSummary--default a.cuf-wrapperAnchor {
+	border-bottom: none;
+}
+
+.THIS .slds-dropdown-trigger {
+	display: none;
+}
+
+.THIS .forceChatterBasePublisher .cuf-publisherTopics .topicWidget {
+	display: none;
+}

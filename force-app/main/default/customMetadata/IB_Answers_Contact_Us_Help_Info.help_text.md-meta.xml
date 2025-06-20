@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>help text</label>
+    <protected>false</protected>
+    <values>
+        <field>Help_Info__c</field>
+        <value xsi:type="xsd:string">If you require assistance, we&apos;re here to help. For immediate solutions, we suggest checking our support content or using our online form. If your matter is urgent, please call us with your case number ready. We&apos;re committed to resolving your issues promptly and efficiently.</value>
+    </values>
+    <values>
+        <field>Help_Info_es__c</field>
+        <value xsi:type="xsd:string">Si necesita asistencia, estamos a su disposición para lo que necesite. Le sugerimos que consulte nuestro contenido de ayuda para obtener soluciones directas o bien que utilice nuestro formulario en línea. Si es una cuestión urgente, llámenos y tenga a mano su número de caso. Haremos todo lo posible por resolver sus problemas técnicos de manera rápida y eficiente.</value>
+    </values>
+    <values>
+        <field>Help_Info_fr__c</field>
+        <value xsi:type="xsd:string">Si vous avez besoin d’aide, nous sommes là pour vous. Pour des solutions immédiates, nous vous conseillons de consulter notre contenu d’aide. Vous pouvez également utiliser notre formulaire en ligne. Si votre cas est urgent, veuillez nous téléphoner en vous munissant de votre numéro de demande. Nous nous engageons à résoudre vos problèmes rapidement et efficacement.</value>
+    </values>
+</CustomMetadata>

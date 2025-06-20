@@ -1,0 +1,6 @@
+<aura:component implements="force:hasRecordId,forceCommunity:availableForAllPageTypes" access="global" >
+    <lightning:messageChannel type="ibAnswersCaseDeflection__c" onMessage="{!c.handleChanged}" />   
+    <aura:handler event="lightningcommunity:deflectionSignal" action="{!c.handleSignal}"/>
+    <aura:attribute name="deflectionAnswer" type="String" required="false"/>
+    <aura:attribute name="deflectionEntityId" type="String" required="false"/>    
+</aura:component>

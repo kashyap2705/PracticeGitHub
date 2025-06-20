@@ -1,0 +1,124 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global" controller="CSM_CaseListViewController">
+
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <ltng:require styles="{!$Resource.ibAnswersCSS}" />
+    <aura:attribute name="caseStatusOptions" type="List" />
+    <aura:attribute name="selectedCaseStatus" type="String" />
+    <aura:attribute name="homeTranslation" type="String" />
+    <aura:attribute name="myCasesTranslation" type="String" />
+    <aura:attribute name="openNewCaseTranslation" type="String" />
+    <aura:attribute name="statusTooltipTranslation" type="String" />
+    <aura:attribute name="dateTooltipTranslation" type="String" />
+    <aura:attribute name="quickHelpTranslation" type="String" />
+    <aura:attribute name="datePlaceHolderTranslation" type="String" />
+    <aura:attribute name="dateFilterTranslation" type="String" />
+    <aura:attribute name="statusFilterTranslation" type="String" />
+    <aura:attribute name="allTranslation" type="String" />
+    <aura:attribute name="errorTranslation" type="String" default="Error" />
+    <aura:attribute name="wentWrongTranslation" type="String" default="Something went wrong!" />
+    <aura:attribute name="caseDateFilterOptions" type="List" />
+    <aura:attribute name="selectedDateFilter" type="String" default="specify a date range" />
+    <aura:attribute name="helpTopicsUrl" type="String" />
+    <aura:attribute name="newCaseUrl" type="String" />
+    <aura:attribute name="homeUrl" type="String" />
+    <aura:attribute name="showImage" type="Boolean" default="true" />
+    <aura:attribute name="showStatusImage" type="Boolean" default="true" />
+    <aura:attribute name="languageMap" type="Object" />
+    <aura:attribute name="imageSrcDefault" type="String" default="{!$Resource.IB_Answers + '/icons/info_white.svg'}" />
+    <aura:attribute name="imageSrcFilled" type="String" default="{!$Resource.IB_Answers + '/icons/info_white_filled.svg'}" />
+
+    <!-- Listview attributes -->
+    <aura:attribute name="objectInfo" type="string" default="Case" />
+    <aura:attribute name="listViewMap" type="Map" />
+    <aura:attribute name="selectedListView" type="String" default="All" />
+    <aura:attribute name="listViewBody" type="Aura.Component[]" />
+    <aura:attribute name="isMessageReceived" type="Boolean" default="false" />
+    <c:ibTranslationsUtil aura:id="translationsUtil" />
+    <aura:attribute name="recordValue" type="String" />
+    <lightning:messageChannel type="ibAnswersExpChannel__c" onMessage="{!c.handleChanged}" />
+    <aura:attribute name="userLanguage" type="String" access="public" default="{!$Locale.langLocale}"/>
+    <aura:attribute name="translationsMap" type="Map" />
+
+    <div class="slds-m-around_xx-large" style="z-index: 1; position: relative">
+        <div class="slds-grid slds-wrap ">
+            <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-12"></div>
+            <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_10-of-12 prmclr">
+                <div class="mycases_header">
+                    <div class="slds-grid slds-wrap slds-grid_vertical-align-end" style="padding-bottom: 20px;">
+                        <div class="slds-col colwidth right-padding" style="padding-bottom: 0px;">
+                            <img src="{!$Resource.IB_Answers+'/icons/my_cases_white.svg'}" class="caseimg" />
+                        </div>
+                        <div class="slds-col colwidth right-padding slds-grid slds-wrap slds-grid_vertical info-heading"
+                            style="margin-top: 0.5rem">
+                            <div class="slds-col">
+                                <a onclick="{!c.handleHomeClick}" class="case-header-text regular-font-light">{!v.homeTranslation}&nbsp;</a>
+                                <span class="case-header-text regular-font-light">>&nbsp;{!v.myCasesTranslation}</span>
+                            </div>
+                            <div class="slds-col">
+                                <div class="case-heading-text regular-font-light">
+                                    {!v.myCasesTranslation}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="slds-col colwidth " style="padding-top: 0.5rem">
+                            <span class="case-header-text regular-font-light">{!v.statusFilterTranslation}&nbsp;</span>
+                            <div class="tooltip">
+                                <button class="slds-button slds-button_icon" aria-describedby="help" aria-disabled="true" title="Help">
+                                    <img aura:id="infoImg" src="{!v.showStatusImage ? v.imageSrcDefault : v.imageSrcFilled}" class="infoimg"
+                                        onmouseover="{!c.handleMouseOverOnStatus}" onmouseout="{!c.handleMouseOutOnStatus}" />
+                                </button>
+                                <span class="slds-popover slds-popover_tooltip slds-nubbin_bottom-left tooltiptext slds-popover__body"><span
+                                        class="tooltip-text regular-font">
+                                        <aura:unescapedHtml value="{!v.statusTooltipTranslation}" />
+                                    </span></span>
+                            </div>
+                            <lightning:combobox name="caseStatusPicklist" placeholder="{!v.allTranslation}" class="text-combo-box regular-font"
+                                options="{!v.caseStatusOptions}" value="{!v.selectedCaseStatus}" onchange="{!c.onCaseStatusPicklistChange}"
+                                style="padding-top: 0.1rem" />
+                        </div>
+                        <div class="slds-col colwidth " style=" padding-top: 0.5rem;">
+                            <span class="case-header-text regular-font-light">{!v.dateFilterTranslation}&nbsp;</span>
+                            <div class="tooltip" role="tooltip">
+                                <button class="slds-button slds-button_icon" aria-describedby="help" aria-disabled="true" title="Help">
+                                    <img aura:id="infoImg" src="{!v.showImage ? v.imageSrcDefault : v.imageSrcFilled}" class="infoimg"
+                                        onmouseover="{!c.handleMouseOver}" onmouseout="{!c.handleMouseOut}" />
+                                </button>
+                                <span class="slds-popover slds-popover_tooltip slds-nubbin_bottom-left tooltiptext slds-popover__body"><span
+                                        class="tooltip-text regular-font">
+                                        <aura:unescapedHtml value="{!v.dateTooltipTranslation}" />
+                                    </span></span>
+                            </div>
+
+                            <lightning:combobox aura:id="datePicklist" value="{!v.selectedDateFilter}"
+                                placeholder="{!v.datePlaceHolderTranslation}" class="text-combo-box regular-font"
+                                options="{!v.caseDateFilterOptions}" onchange="{!c.onCaseDatePicklistChange}"
+                                style="padding-top: 0.1rem;min-width:-webkit-fill-available" />
+                        </div>
+                        <div class="slds-col slds-grow-none slds-hyphenate" style="padding-top: 2.5rem;">
+                            <img src="{!$Resource.IB_Answers+'/icons/help_topics_white.svg'}" class="img" />
+
+                            <span style="padding-top: 2.5rem; padding-left: 2px; max-width: 519px">
+                                <a class="case-help-text  regular-font-light slds-grow-none slds-hyphenate"
+                                    onclick="{!c.navigateToHelpTopicsUrl}">&nbsp; {!v.quickHelpTranslation} ></a>
+                            </span>
+                        </div>
+                        <div class="slds-col_bump-left"></div>
+                        <div class="slds-col colwidth regular-font open-case-btn slds-float_left" onclick="{!c.navigateToNewCaseUrl}">
+                            <a href="">{!v.openNewCaseTranslation}</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mycases-body">
+                    <div class="mycases-inner">
+                        <aura:renderIf isTrue="{!not(empty(v.selectedListView))}">
+                            {!v.listViewBody}
+                        </aura:renderIf>
+                    </div>
+                </div>
+
+                <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-12"></div>
+            </div>
+        </div>
+    </div>
+</aura:component>

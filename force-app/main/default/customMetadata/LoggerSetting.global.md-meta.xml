@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>global</label>
+    <protected>false</protected>
+    <values>
+        <field>Enable_Log_Events_from_Level__c</field>
+        <value xsi:type="xsd:string">Debug</value>
+    </values>
+    <values>
+        <field>Enable_Log_Save_from_Level__c</field>
+        <value xsi:type="xsd:string">Debug</value>
+    </values>
+</CustomMetadata>

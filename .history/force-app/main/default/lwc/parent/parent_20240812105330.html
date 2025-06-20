@@ -1,0 +1,40 @@
+<!--
+  @description       : 
+  @author            : ChangeMeIn@UserSettingsUnder.SFDoc
+  @group             : 
+  @last modified on  : 08-12-2024
+  @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+-->
+<template>
+
+      <lightning-card title="Summer '23 Maintenance">
+  
+            <lightning-button slot="actions" label="Say Hi" onclick={sayHi}></lightning-button>
+  
+            <template lwc:if={account.data}>
+  
+                  <div>
+  
+                        <p>Account Name: {name}</p>
+  
+                        <p>Industry: {industry}</p>
+  
+                        <p>Phone: {phone}</p>
+  
+                        <p>Owner: {owner}</p>
+  
+                 </div>
+  
+           </template>
+  
+           <template lwc:elseif={account.data}>
+  
+                <div >An error occurred while retrieving data</div>
+  
+           </template>
+  
+           <c-child lwc:ref="child"></c-child>
+  
+     </lightning-card>
+  
+  </template>

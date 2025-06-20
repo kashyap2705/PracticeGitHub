@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>IB Answer Recaptcha</label>
+    <protected>false</protected>
+    <values>
+        <field>Captcha_Private_Key__c</field>
+        <value xsi:type="xsd:string">6LfTIJUpAAAAAF2FaGO75mJ60_cR8FciI1mXlRNP</value>
+    </values>
+    <values>
+        <field>Captcha_Public_Key__c</field>
+        <value xsi:type="xsd:string">6LfTIJUpAAAAANOYhzQNYi4ld-S2RZC0RIskcF4V</value>
+    </values>
+    <values>
+        <field>External_Link__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Icon_Image_Name_Prefix__c</field>
+        <value xsi:nil="true"/>
+    </values>
+</CustomMetadata>

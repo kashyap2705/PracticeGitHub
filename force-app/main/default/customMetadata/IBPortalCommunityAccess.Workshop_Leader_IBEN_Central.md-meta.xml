@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>Workshop Leader IBEN Central</label>
+    <protected>false</protected>
+    <values>
+        <field>Associate_Subjects__c</field>
+        <value xsi:type="xsd:boolean">false</value>
+    </values>
+    <values>
+        <field>Community_Name__c</field>
+        <value xsi:type="xsd:string">IBEN_Central</value>
+    </values>
+    <values>
+        <field>IB_Role__c</field>
+        <value xsi:type="xsd:string">Workshop Leader</value>
+    </values>
+    <values>
+        <field>Role_Confirmed__c</field>
+        <value xsi:type="xsd:boolean">true</value>
+    </values>
+</CustomMetadata>

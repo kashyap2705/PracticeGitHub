@@ -1,0 +1,23 @@
+<aura:component implements="force:appHostable,forceCommunity:layout,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    <aura:attribute name= "Column1" type= "Aura.component[]"/>
+    <aura:attribute name= "Column2" type= "Aura.component[]"/>
+    <aura:attribute name= "Column3" type= "Aura.component[]"/>
+    <aura:attribute name= "Column4" type= "Aura.component[]"/>
+    
+    
+    <div class="demo-only demo-only--sizing slds-grid slds-wrap">
+      <div class="slds-size_1-of-4">
+        <div class="slds-box slds-box_x-small slds-text-align_center slds-m-around_x-small">{!v.Column1}</div>
+      </div>
+      <div class="slds-size_1-of-4">
+        <div class="slds-box slds-box_x-small slds-text-align_center slds-m-around_x-small">{!v.Column2}</div>
+      </div>
+      <div class="slds-size_1-of-4">
+        <div class="slds-box slds-box_x-small slds-text-align_center slds-m-around_x-small">{!v.Column3}</div>
+      </div>
+      <div class="slds-size_1-of-4">
+        <div class="slds-box slds-box_x-small slds-text-align_center slds-m-around_x-small">{!v.Column4}</div>
+      </div>
+    </div>    
+        
+</aura:component>

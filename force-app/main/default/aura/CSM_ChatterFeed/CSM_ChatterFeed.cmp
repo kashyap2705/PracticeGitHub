@@ -1,0 +1,21 @@
+<aura:component controller="CSM_GetCaseRecord"
+    implements="flexipage:availableForAllPageTypes,forceCommunity:availableForAllPageTypes,force:hasRecordId" access="global">
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <lightning:messageChannel type="ibAnswersCaseStatus__c" onMessage="{!c.handleChanged}" />
+    <aura:attribute name="CaseStatus" type="String" required="false" />
+    <ltng:require styles="{!$Resource.ibAnswersCSS}" />
+    <aura:attribute name='showEditChatter' type='Boolean' default="true" />
+    <aura:if isTrue="{!v.showEditChatter}">
+        <div aura:id="feedContainer" class="feed-container">
+            <forceChatter:publisher context="RECORD" recordId="{!v.recordId}" />
+            <forceChatter:feed type="Record" subjectId="{!v.recordId}" feedDesign="DEFAULT" />
+        </div>
+        <aura:set attribute="else">
+            <div aura:id="feedContainer" class="feed-container" style="pointer-events: none">
+                <forceChatter:publisher context="RECORD" recordId="{!v.recordId}" />
+                <forceChatter:feed type="Record" subjectId="{!v.recordId}" feedDesign="DEFAULT" />
+                <div class="greyOut"></div>
+            </div>
+        </aura:set>
+    </aura:if>
+</aura:component>
